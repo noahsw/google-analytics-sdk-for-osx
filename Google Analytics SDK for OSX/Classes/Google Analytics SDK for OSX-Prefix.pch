@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Google Analytics SDK for OSX' target in the 'Google Analytics SDK for OSX' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

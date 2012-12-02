@@ -1,0 +1,3 @@
+[submodule "Google Analytics SDK for OSX/CocoaLumberjack"]
+	path = Google Analytics SDK for OSX/CocoaLumberjack
+	url = git://github.com/robbiehanson/CocoaLumberjack.git
