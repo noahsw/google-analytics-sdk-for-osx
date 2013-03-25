@@ -6,8 +6,7 @@
 //  http://github.com/noahsw/google-analytics-sdk-for-osx
 //
 
-#define GANALYTICS_DOMAIN @"voyagerapps.com"
-
+#define GANALYTICS_DOMAIN @"app.ga"
 
 @interface AnalyticsHelper : NSObject
 
