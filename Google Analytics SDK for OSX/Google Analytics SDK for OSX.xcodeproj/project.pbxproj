@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C469A05F170011780085BB41 /* GoogleUniversalTracking.h in Headers */ = {isa = PBXBuildFile; fileRef = C469A05D170011780085BB41 /* GoogleUniversalTracking.h */; };
+		C469A060170011780085BB41 /* GoogleUniversalTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = C469A05E170011780085BB41 /* GoogleUniversalTracking.m */; };
 		CE42F10B166AE7FE005AE3D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F10A166AE7FE005AE3D4 /* Cocoa.framework */; };
 		CE42F115166AE7FE005AE3D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE42F113166AE7FE005AE3D4 /* InfoPlist.strings */; };
 		CE42F121166AE7FE005AE3D4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F120166AE7FE005AE3D4 /* SenTestingKit.framework */; };
@@ -14,7 +16,7 @@
 		CE42F125166AE7FE005AE3D4 /* Google Analytics SDK for OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F107166AE7FE005AE3D4 /* Google Analytics SDK for OSX.framework */; };
 		CE42F12B166AE7FE005AE3D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE42F129166AE7FE005AE3D4 /* InfoPlist.strings */; };
 		CE42F12E166AE7FF005AE3D4 /* Google_Analytics_SDK_for_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F12D166AE7FF005AE3D4 /* Google_Analytics_SDK_for_OSXTests.m */; };
-		CE42F145166AE977005AE3D4 /* AnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = CE42F137166AE976005AE3D4 /* AnalyticsHelper.h */; };
+		CE42F145166AE977005AE3D4 /* AnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = CE42F137166AE976005AE3D4 /* AnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE42F146166AE977005AE3D4 /* AnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F138166AE976005AE3D4 /* AnalyticsHelper.m */; };
 		CE42F147166AE977005AE3D4 /* GoogleEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = CE42F139166AE976005AE3D4 /* GoogleEvent.h */; };
 		CE42F148166AE977005AE3D4 /* GoogleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F13A166AE976005AE3D4 /* GoogleEvent.m */; };
@@ -47,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C469A05D170011780085BB41 /* GoogleUniversalTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleUniversalTracking.h; sourceTree = "<group>"; };
+		C469A05E170011780085BB41 /* GoogleUniversalTracking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleUniversalTracking.m; sourceTree = "<group>"; };
 		CE42F107166AE7FE005AE3D4 /* Google Analytics SDK for OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Google Analytics SDK for OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE42F10A166AE7FE005AE3D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CE42F10D166AE7FE005AE3D4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -152,6 +156,8 @@
 				CE42F13A166AE976005AE3D4 /* GoogleEvent.m */,
 				CE42F13B166AE976005AE3D4 /* GoogleTracking.h */,
 				CE42F13C166AE977005AE3D4 /* GoogleTracking.m */,
+				C469A05D170011780085BB41 /* GoogleUniversalTracking.h */,
+				C469A05E170011780085BB41 /* GoogleUniversalTracking.m */,
 				CE816B8F166AF35D00D1FF53 /* JFUrlUtil.h */,
 				CE816B90166AF35D00D1FF53 /* JFUrlUtil.m */,
 				CE42F13D166AE977005AE3D4 /* NSString+URLEncoding.h */,
@@ -221,6 +227,7 @@
 				CE42F151166AE977005AE3D4 /* TrackingRequest.h in Headers */,
 				CE42F156166AEFA6005AE3D4 /* DDLog.h in Headers */,
 				CE816B91166AF35D00D1FF53 /* JFUrlUtil.h in Headers */,
+				C469A05F170011780085BB41 /* GoogleUniversalTracking.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +347,7 @@
 				CE42F152166AE977005AE3D4 /* TrackingRequest.m in Sources */,
 				CE42F157166AEFA6005AE3D4 /* DDLog.m in Sources */,
 				CE816B92166AF35D00D1FF53 /* JFUrlUtil.m in Sources */,
+				C469A060170011780085BB41 /* GoogleUniversalTracking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

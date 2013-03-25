@@ -6,10 +6,14 @@
 //  http://github.com/noahsw/google-analytics-sdk-for-osx
 //
 
+#define GANALYTICS_DOMAIN @"voyagerapps.com"
 
 
 @interface AnalyticsHelper : NSObject
 
 +(BOOL) fireEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue;
+
++(BOOL) mearsureEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue;
+
 
 @end
