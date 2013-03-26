@@ -32,8 +32,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
 
 - (void)main
 {
-    if (![NSThread isMainThread]) {
-        [self performSelectorOnMainThread:@selector(main) withObject:nil waitUntilDone:NO];
+    if ([NSThread isMainThread]) {
+        [self performSelectorInBackground:@selector(main) withObject:nil];
         return;
     }
     
