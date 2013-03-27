@@ -25,13 +25,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
     [NSThread setThreadPriority:0.1];
     [NSThread sleepForTimeInterval:1];
     
-    NSString* analyticsAccountCode = nil;
-    NSBundle* mainBundle = [NSBundle mainBundle];
+    static NSString* analyticsAccountCode = nil;
+    if (analyticsAccountCode == nil) {
+        NSBundle* mainBundle = [NSBundle mainBundle];
 #if DEBUG
-    analyticsAccountCode = [mainBundle objectForInfoDictionaryKey:@"Google Analytics ID (Debug)"];
+        analyticsAccountCode = [mainBundle objectForInfoDictionaryKey:@"Google Analytics ID (Debug)"];
 #else
-    analyticsAccountCode = [mainBundle objectForInfoDictionaryKey:@"Google Analytics ID (Release)"];
+        analyticsAccountCode = [mainBundle objectForInfoDictionaryKey:@"Google Analytics ID (Release)"];
 #endif
+    }
     
     NSAssert(analyticsAccountCode!=nil, @"analyticsAccountCode can not be nil, set it in your info.plist.");
     
