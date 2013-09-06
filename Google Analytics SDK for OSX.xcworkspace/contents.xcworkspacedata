@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Sample Project/Sample Project.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Google Analytics SDK for OSX/Google Analytics SDK for OSX.xcodeproj">
    </FileRef>
 </Workspace>
