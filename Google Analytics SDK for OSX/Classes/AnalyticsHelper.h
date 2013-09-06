@@ -7,9 +7,11 @@
 //
 
 
-
 @interface AnalyticsHelper : NSObject
 
-+(BOOL) fireEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue;
+@property NSString* domainName;
+@property NSString* analyticsAccountCode;
+
+-(BOOL) fireEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue;
 
 @end
