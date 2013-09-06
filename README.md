@@ -10,7 +10,7 @@ Instructions
 2. Switch to your app project and go to the Build Phases tab
 3. Click the + button on the Link Binary with Libraries section
 4. Select the Google Analytics SDK for OSX.framework
-5. See the Sample Project for how to initialize and setup the framework in your app
+5. See the Sample Project for how to initialize and setup the framework in your app (/Sample Project/Sample Project/AppDelegate.m)
 
 
 Credits
