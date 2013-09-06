@@ -45,14 +45,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
         pageTitle = @"";
         pageDomain = @"";
         pageUrl = @"/";
-        
-        NSDictionary* data = [NSDictionary dictionaryWithContentsOfFile:
-                              [[NSBundle mainBundle] pathForResource:@"Google Analytics SDK for OSX-Info" ofType:@"plist"]];
-#if DEBUG
-        analyticsAccountCode = [data objectForKey:@"Google Analytics ID (Debug)"];
-#else
-        analyticsAccountCode = [data objectForKey:@"Google Analytics ID (Release)"];
-#endif
     }
     
     return self;
@@ -64,7 +56,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
     
     
     // REQUEST URL FORMAT:
-    // http://www.google-analytics.com/__utm.gif?utmwv=4.6.5&utmn=488134812&utmhn=facebook.com&utmcs=UTF-8&utmsr=1024x576&utmsc=24-bit&utmul=en-gb&utmje=0&utmfl=10.0%20r42&utmdt=Facebook%20Contact%20Us&utmhid=700048481&utmr=-&utmp=%2Fwebdigi%2Fcontact&utmac=UA-3659733-5&utmcc=__utma%3D155417661.474914265.1263033522.1265456497.1265464692.6%3B%2B__utmz%3D155417661.1263033522.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B
+    // http://www.google-analytics.com/__utm.gif?utmwv=4.6.5&utmn=488134812&utmhn=facebook.com&utmcs=UTF-8&utmsr=1024x576&utmsc=24-bit&utmul=en-gb&utmje=0&utmfl=10.0%20r42&utmdt=Facebook%20Contact%20Us&utmhid=48481&utmr=-&utmp=%2Fwebdigi%2Fcontact&utmac=UA-YYYY-Z&utmcc=__utma%3D15417661.47491465.126033522.125456497.12664692.6%3B%2B__utmz%3D1417661.12630522.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B
     
     NSMutableDictionary* paramList = [NSMutableDictionary dictionary];
     paramList[@"utmwv"] = @"5.2.2d"; // analytics version
@@ -184,7 +176,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
         
     NSString* finalURL = [NSString stringWithFormat:@"http://www.google-analytics.com/__utm.gif?%@", gaParams];
     
-    //DDLogVerbose(@"Google Analytics URL: %@", finalURL);
+    DDLogVerbose(@"Google Analytics URL: %@", finalURL);
     
     return finalURL;
     
