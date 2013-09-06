@@ -6,11 +6,11 @@ This unofficial SDK allows you to track usage of your OS X applications. Google 
 
 Instructions
 ------------
-1. Add your Google Analytics ID to the project pList (Google Analytics ID field for Debug and Release)
-2. Add your website's domain name to the project pList (Domain name)
-2. Build the framework
-3. Add the framework as a reference to your app's project
-
+1. Build the framework so you have a Google Analytics SDK for OSX.framework file in the Products folder of the SDK project
+2. Switch to your app project and go to the Build Phases tab
+3. Click the + button on the Link Binary with Libraries section
+4. Select the Google Analytics SDK for OSX.framework
+5. See the Sample Project for how to initialize and setup the framework in your app
 
 
 Credits
