@@ -22,12 +22,6 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>Domain name</key>
-	<string>example.com</string>
-	<key>Google Analytics ID (Debug)</key>
-	<string></string>
-	<key>Google Analytics ID (Release)</key>
-	<string></string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2012 Noah Spitzer-Williams. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
