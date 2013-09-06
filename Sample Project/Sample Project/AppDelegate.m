@@ -19,9 +19,9 @@
     [analyticsHelper setAnalyticsAccountCode:@"UA-XXXXX-Y"];
     
     if ([analyticsHelper fireEvent:@"appLoads" eventValue:@1])
-        NSLog(@"Google Analytics event fired successfully");
+        NSLog(@"Google Analytics event fired asyncronously from Sample Project");
     else
-        NSLog(@"Error firing Google Analytics event!");
+        NSLog(@"Error firing Google Analytics event from Sample Project!");
     
 }
 
