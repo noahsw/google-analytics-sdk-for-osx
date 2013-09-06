@@ -13,6 +13,12 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    
+    if ([AnalyticsHelper fireEvent:@"appLoads" eventValue:@1])
+        NSLog(@"Google Analytics event fired successfully");
+    else
+        NSLog(@"Error firing Google Analytics event!");
+    
 }
 
 @end

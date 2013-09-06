@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F68C34217D95C8D0012E48A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F68C34117D95C8D0012E48A /* README.md */; };
 		CE42F10B166AE7FE005AE3D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F10A166AE7FE005AE3D4 /* Cocoa.framework */; };
 		CE42F115166AE7FE005AE3D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE42F113166AE7FE005AE3D4 /* InfoPlist.strings */; };
 		CE42F121166AE7FE005AE3D4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F120166AE7FE005AE3D4 /* SenTestingKit.framework */; };
@@ -15,7 +14,7 @@
 		CE42F125166AE7FE005AE3D4 /* Google Analytics SDK for OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F107166AE7FE005AE3D4 /* Google Analytics SDK for OSX.framework */; };
 		CE42F12B166AE7FE005AE3D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE42F129166AE7FE005AE3D4 /* InfoPlist.strings */; };
 		CE42F12E166AE7FF005AE3D4 /* Google_Analytics_SDK_for_OSXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F12D166AE7FF005AE3D4 /* Google_Analytics_SDK_for_OSXTests.m */; };
-		CE42F145166AE977005AE3D4 /* AnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = CE42F137166AE976005AE3D4 /* AnalyticsHelper.h */; };
+		CE42F145166AE977005AE3D4 /* AnalyticsHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = CE42F137166AE976005AE3D4 /* AnalyticsHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE42F146166AE977005AE3D4 /* AnalyticsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F138166AE976005AE3D4 /* AnalyticsHelper.m */; };
 		CE42F147166AE977005AE3D4 /* GoogleEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = CE42F139166AE976005AE3D4 /* GoogleEvent.h */; };
 		CE42F148166AE977005AE3D4 /* GoogleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CE42F13A166AE976005AE3D4 /* GoogleEvent.m */; };
@@ -300,7 +299,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE42F115166AE7FE005AE3D4 /* InfoPlist.strings in Resources */,
-				4F68C34217D95C8D0012E48A /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

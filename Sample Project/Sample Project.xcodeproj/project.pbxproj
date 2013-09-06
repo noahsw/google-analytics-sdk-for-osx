@@ -17,6 +17,7 @@
 		4F68C36F17D95D4E0012E48A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F68C34F17D95D4E0012E48A /* Cocoa.framework */; };
 		4F68C37717D95D4E0012E48A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4F68C37517D95D4E0012E48A /* InfoPlist.strings */; };
 		4F68C37A17D95D4E0012E48A /* Sample_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F68C37917D95D4E0012E48A /* Sample_ProjectTests.m */; };
+		4F68C38417D95E170012E48A /* Google Analytics SDK for OSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F68C38317D95E170012E48A /* Google Analytics SDK for OSX.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		4F68C37617D95D4E0012E48A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4F68C37817D95D4E0012E48A /* Sample_ProjectTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sample_ProjectTests.h; sourceTree = "<group>"; };
 		4F68C37917D95D4E0012E48A /* Sample_ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample_ProjectTests.m; sourceTree = "<group>"; };
+		4F68C38317D95E170012E48A /* Google Analytics SDK for OSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "Google Analytics SDK for OSX.framework"; path = "../../../Library/Developer/Xcode/DerivedData/Google_Analytics_SDK_for_OSX-efkkezpstyitkcekomlaismrliot/Build/Products/Debug/Google Analytics SDK for OSX.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F68C38417D95E170012E48A /* Google Analytics SDK for OSX.framework in Frameworks */,
 				4F68C35017D95D4E0012E48A /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +97,7 @@
 		4F68C34E17D95D4E0012E48A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F68C38317D95E170012E48A /* Google Analytics SDK for OSX.framework */,
 				4F68C34F17D95D4E0012E48A /* Cocoa.framework */,
 				4F68C36D17D95D4E0012E48A /* SenTestingKit.framework */,
 				4F68C35117D95D4E0012E48A /* Other Frameworks */,
@@ -383,6 +387,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Google_Analytics_SDK_for_OSX-efkkezpstyitkcekomlaismrliot/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sample Project/Sample Project-Prefix.pch";
 				INFOPLIST_FILE = "Sample Project/Sample Project-Info.plist";
@@ -395,6 +403,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/Google_Analytics_SDK_for_OSX-efkkezpstyitkcekomlaismrliot/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sample Project/Sample Project-Prefix.pch";
 				INFOPLIST_FILE = "Sample Project/Sample Project-Info.plist";

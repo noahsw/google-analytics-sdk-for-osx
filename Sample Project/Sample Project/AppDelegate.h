@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Google Analytics SDK for OSX/AnalyticsHelper.h>
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
