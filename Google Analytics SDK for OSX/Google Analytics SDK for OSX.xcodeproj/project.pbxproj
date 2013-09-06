@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F68C34217D95C8D0012E48A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F68C34117D95C8D0012E48A /* README.md */; };
 		CE42F10B166AE7FE005AE3D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F10A166AE7FE005AE3D4 /* Cocoa.framework */; };
 		CE42F115166AE7FE005AE3D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE42F113166AE7FE005AE3D4 /* InfoPlist.strings */; };
 		CE42F121166AE7FE005AE3D4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F120166AE7FE005AE3D4 /* SenTestingKit.framework */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F68C34117D95C8D0012E48A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CE42F107166AE7FE005AE3D4 /* Google Analytics SDK for OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Google Analytics SDK for OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE42F10A166AE7FE005AE3D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CE42F10D166AE7FE005AE3D4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -106,6 +108,7 @@
 		CE42F0FB166AE7FE005AE3D4 = {
 			isa = PBXGroup;
 			children = (
+				4F68C34117D95C8D0012E48A /* README.md */,
 				CE42F110166AE7FE005AE3D4 /* Classes */,
 				CE42F126166AE7FE005AE3D4 /* Tests */,
 				CE42F109166AE7FE005AE3D4 /* Frameworks */,
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE42F115166AE7FE005AE3D4 /* InfoPlist.strings in Resources */,
+				4F68C34217D95C8D0012E48A /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,8 +16,6 @@
 #import "DDLog.h"
 static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERROR | LOG_LEVEL_WARN;
 
-static NSString* DOMAIN_NAME = @"yourdomain.com";
-
 static NSOperationQueue* operationQueue;
 
 
@@ -47,7 +45,11 @@ static NSOperationQueue* operationQueue;
     
     DDLogInfo(@"%@, %@, %@, %@", eventCategory, eventAction, eventLabel, eventValue);
     
-    GoogleEvent* googleEvent = [[GoogleEvent alloc] initWithParams:DOMAIN_NAME category:eventCategory action:eventAction label:eventLabel value:eventValue];
+    NSDictionary* data = [NSDictionary dictionaryWithContentsOfFile:
+                          [[NSBundle mainBundle] pathForResource:@"Google Analytics SDK for OSX-Info" ofType:@"plist"]];
+    NSString* domainName = [data objectForKey:@"Domain name"];
+    
+    GoogleEvent* googleEvent = [[GoogleEvent alloc] initWithParams:domainName category:eventCategory action:eventAction label:eventLabel value:eventValue];
     
     
     if (googleEvent != nil)

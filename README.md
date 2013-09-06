@@ -6,7 +6,8 @@ This unofficial SDK allows you to track usage of your OS X applications. Google 
 
 Instructions
 ------------
-1. Add your Google Analytics ID to the project pList
+1. Add your Google Analytics ID to the project pList (Google Analytics ID field for Debug and Release)
+2. Add your website's domain name to the project pList (Domain name)
 2. Build the framework
 3. Add the framework as a reference to your app's project
 

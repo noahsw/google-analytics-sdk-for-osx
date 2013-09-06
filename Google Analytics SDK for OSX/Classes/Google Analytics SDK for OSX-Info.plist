@@ -6,6 +6,8 @@
 	<string></string>
 	<key>Google Analytics ID (Release)</key>
 	<string></string>
+	<key>Domain name</key>
+	<string>example.com</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
