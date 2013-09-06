@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F68C38717D969700012E48A /* DDTTYLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F68C38517D969700012E48A /* DDTTYLogger.h */; };
+		4F68C38817D969700012E48A /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F68C38617D969700012E48A /* DDTTYLogger.m */; };
 		CE42F10B166AE7FE005AE3D4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F10A166AE7FE005AE3D4 /* Cocoa.framework */; };
 		CE42F115166AE7FE005AE3D4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE42F113166AE7FE005AE3D4 /* InfoPlist.strings */; };
 		CE42F121166AE7FE005AE3D4 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE42F120166AE7FE005AE3D4 /* SenTestingKit.framework */; };
@@ -48,6 +50,8 @@
 
 /* Begin PBXFileReference section */
 		4F68C34117D95C8D0012E48A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		4F68C38517D969700012E48A /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = CocoaLumberjack/Lumberjack/DDTTYLogger.h; sourceTree = "<group>"; };
+		4F68C38617D969700012E48A /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDTTYLogger.m; path = CocoaLumberjack/Lumberjack/DDTTYLogger.m; sourceTree = "<group>"; };
 		CE42F107166AE7FE005AE3D4 /* Google Analytics SDK for OSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Google Analytics SDK for OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE42F10A166AE7FE005AE3D4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CE42F10D166AE7FE005AE3D4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -201,6 +205,8 @@
 		CE42F153166AEF88005AE3D4 /* CocoaLumberjack */ = {
 			isa = PBXGroup;
 			children = (
+				4F68C38517D969700012E48A /* DDTTYLogger.h */,
+				4F68C38617D969700012E48A /* DDTTYLogger.m */,
 				CE42F154166AEFA6005AE3D4 /* DDLog.h */,
 				CE42F155166AEFA6005AE3D4 /* DDLog.m */,
 			);
@@ -223,6 +229,7 @@
 				CE42F151166AE977005AE3D4 /* TrackingRequest.h in Headers */,
 				CE42F156166AEFA6005AE3D4 /* DDLog.h in Headers */,
 				CE816B91166AF35D00D1FF53 /* JFUrlUtil.h in Headers */,
+				4F68C38717D969700012E48A /* DDTTYLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +349,7 @@
 				CE42F152166AE977005AE3D4 /* TrackingRequest.m in Sources */,
 				CE42F157166AEFA6005AE3D4 /* DDLog.m in Sources */,
 				CE816B92166AF35D00D1FF53 /* JFUrlUtil.m in Sources */,
+				4F68C38817D969700012E48A /* DDTTYLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

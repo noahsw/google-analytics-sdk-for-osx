@@ -16,7 +16,7 @@
     AnalyticsHelper* analyticsHelper = [AnalyticsHelper new];
     
     [analyticsHelper setDomainName:@"example.com"];
-    [analyticsHelper setAnalyticsId:@"UA-XXXXX-Y"];
+    [analyticsHelper setAnalyticsAccountCode:@"UA-XXXXX-Y"];
     
     if ([analyticsHelper fireEvent:@"appLoads" eventValue:@1])
         NSLog(@"Google Analytics event fired successfully");

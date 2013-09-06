@@ -17,6 +17,6 @@
 }
 
 
-- (TrackingRequest*) buildRequest: (GoogleEvent*) googleEvent analyticsId:(NSString*)analyticsId;
+- (TrackingRequest*) buildRequest: (GoogleEvent*) googleEvent analyticsAccountCode:(NSString*)analyticsAccountCode;
 
 @end

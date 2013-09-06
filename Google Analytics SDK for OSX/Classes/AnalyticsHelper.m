@@ -14,6 +14,7 @@
 #import "RequestFactory.h"
 
 #import "DDLog.h"
+#import "DDTTYLogger.h"
 static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERROR | LOG_LEVEL_WARN;
 
 static NSOperationQueue* operationQueue;
@@ -22,7 +23,14 @@ static NSOperationQueue* operationQueue;
 @implementation AnalyticsHelper
 
 @synthesize domainName;
-@synthesize analyticsId;
+@synthesize analyticsAccountCode;
+
+-(id)init
+{
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    return self;
+}
+
 
 -(BOOL) fireEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue
 {
@@ -52,7 +60,7 @@ static NSOperationQueue* operationQueue;
     if (googleEvent != nil)
     {
         RequestFactory* requestFactory = [RequestFactory new];
-        TrackingRequest* request = [requestFactory buildRequest:googleEvent analyticsId:self.analyticsId];
+        TrackingRequest* request = [requestFactory buildRequest:googleEvent analyticsAccountCode:self.analyticsAccountCode];
         
         if (operationQueue == nil)
         {

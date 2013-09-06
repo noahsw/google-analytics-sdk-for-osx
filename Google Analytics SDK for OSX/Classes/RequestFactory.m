@@ -15,11 +15,11 @@
 
 
 
-- (TrackingRequest*) buildRequest: (GoogleEvent*) googleEvent analyticsId:(NSString*)analyticsId
+- (TrackingRequest*) buildRequest: (GoogleEvent*) googleEvent analyticsAccountCode:(NSString*)analyticsAccountCode
 {
     TrackingRequest* tr = [TrackingRequest new];
     [tr setTrackingEvent:googleEvent];
-    [tr setAnalyticsId:analyticsId];
+    [tr setAnalyticsAccountCode:analyticsAccountCode];
     return tr;
 }
 
