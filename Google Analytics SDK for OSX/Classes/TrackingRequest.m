@@ -16,6 +16,8 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
 
 @implementation TrackingRequest
 
+@synthesize analyticsId;
+
 @synthesize pageTitle;
 @synthesize pageDomain;
 @synthesize pageUrl;

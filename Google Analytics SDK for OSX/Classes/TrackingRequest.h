@@ -29,6 +29,8 @@
         
 }
 
+@property NSString *analyticsId;
+
 @property (nonatomic, strong) NSString *pageTitle;
 @property (nonatomic, strong) NSString *pageDomain;
 @property (nonatomic, strong) NSString *pageUrl;

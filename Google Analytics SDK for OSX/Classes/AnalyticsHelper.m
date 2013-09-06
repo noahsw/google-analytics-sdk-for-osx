@@ -21,8 +21,10 @@ static NSOperationQueue* operationQueue;
 
 @implementation AnalyticsHelper
 
+@synthesize domainName;
+@synthesize analyticsId;
 
-+(BOOL) fireEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue
+-(BOOL) fireEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue
 {
     
     NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
@@ -35,7 +37,7 @@ static NSOperationQueue* operationQueue;
         NSString* userUUID = [standardUserDefaults stringForKey:@"UserUUID"];
         if ([userUUID length] == 0)
         { // generate one for the first time
-            userUUID = [self UUIDString];
+            userUUID = [AnalyticsHelper UUIDString];
             [standardUserDefaults setObject:userUUID forKey:@"UserUUID"];
             [standardUserDefaults synchronize];
         }
@@ -45,17 +47,12 @@ static NSOperationQueue* operationQueue;
     
     DDLogInfo(@"%@, %@, %@, %@", eventCategory, eventAction, eventLabel, eventValue);
     
-    NSDictionary* data = [NSDictionary dictionaryWithContentsOfFile:
-                          [[NSBundle mainBundle] pathForResource:@"Google Analytics SDK for OSX-Info" ofType:@"plist"]];
-    NSString* domainName = [data objectForKey:@"Domain name"];
-    
-    GoogleEvent* googleEvent = [[GoogleEvent alloc] initWithParams:domainName category:eventCategory action:eventAction label:eventLabel value:eventValue];
-    
+    GoogleEvent* googleEvent = [[GoogleEvent alloc] initWithParams:self.domainName category:eventCategory action:eventAction label:eventLabel value:eventValue];
     
     if (googleEvent != nil)
     {
         RequestFactory* requestFactory = [RequestFactory new];
-        TrackingRequest* request = [requestFactory buildRequest:googleEvent];
+        TrackingRequest* request = [requestFactory buildRequest:googleEvent analyticsId:self.analyticsId];
         
         if (operationQueue == nil)
         {
