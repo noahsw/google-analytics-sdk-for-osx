@@ -12,7 +12,7 @@
 
 +(BOOL) fireEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue;
 
-+(BOOL) mearsureEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue;
++(BOOL) measureEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue;
 
 
 @end

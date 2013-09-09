@@ -72,7 +72,7 @@ static NSOperationQueue* operationQueue;
     
 }
 
-+(BOOL) mearsureEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue {
++(BOOL) measureEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue {
     NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
     NSString* eventCategory = [NSString stringWithFormat:@"Mac %@", infoDict[@"CFBundleShortVersionString"]];
     
