@@ -17,34 +17,34 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
 
 @implementation TrackingRequest
 
-@synthesize pageTitle;
-@synthesize pageDomain;
-@synthesize pageUrl;
+@synthesize pageTitle = _pageTitle;
+@synthesize pageDomain = _pageDomain;
+@synthesize pageUrl = _pageUrl;
 
-@synthesize requestedByIpAddress;
+@synthesize requestedByIpAddress = _requestedByIpAddress;
 
-@synthesize referralSource;
-@synthesize medium;
-@synthesize campaign;
+@synthesize referralSource = _referralSource;
+@synthesize medium = _medium;
+@synthesize campaign = _campaign;
 
-@synthesize trackingEvent;
+@synthesize trackingEvent = _trackingEvent;
 
-@synthesize analyticsAccountCode;
+@synthesize analyticsAccountCode = _analyticsAccountCode;
 
-@synthesize visitCount;
+@synthesize visitCount = _visitCount;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        referralSource = @"(direct)";
-        medium = @"(none)";
-        campaign = @"(direct)";
-        visitCount = @"2"; // not sure why this is 2 but it was like this in the original code
+        self.referralSource = @"(direct)";
+        self.medium = @"(none)";
+        self.campaign = @"(direct)";
+        self.visitCount = @"2"; // not sure why this is 2 but it was like this in the original code
         
-        pageTitle = @"";
-        pageDomain = @"";
-        pageUrl = @"/";
+        self.pageTitle = @"";
+        self.pageDomain = @"";
+        self.pageUrl = @"/";
     }
 
     return self;
@@ -55,11 +55,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
     // REQUEST URL FORMAT:
     // http://www.google-analytics.com/__utm.gif?utmwv=4.6.5&utmn=488134812&utmhn=facebook.com&utmcs=UTF-8&utmsr=1024x576&utmsc=24-bit&utmul=en-gb&utmje=0&utmfl=10.0%20r42&utmdt=Facebook%20Contact%20Us&utmhid=48481&utmr=-&utmp=%2Fwebdigi%2Fcontact&utmac=UA-YYYY-Z&utmcc=__utma%3D15417661.47491465.126033522.125456497.12664692.6%3B%2B__utmz%3D1417661.12630522.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B
 
-    NSMutableDictionary* paramList = [NSMutableDictionary dictionary];
+    NSMutableDictionary *paramList = [NSMutableDictionary dictionary];
     paramList[@"utmwv"] = @"5.2.2d"; // analytics version
     paramList[@"utmn"] = [NSString stringWithFormat:@"%d", arc4random() % 1000000000]; // random request number
 
-    paramList[@"utmhn"] = pageDomain; // domain name
+    paramList[@"utmhn"] = self.pageDomain; // domain name
     paramList[@"utmcs"] = @"UTF-8"; // document encoding
     paramList[@"utmsr"] = @"-"; // screen resolution
     paramList[@"utmsc"] = @"-"; // screen resolution
@@ -67,15 +67,15 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
     paramList[@"utmje"] = @"0"; // java enabled or not
     paramList[@"utmfl"] = @"-"; // flash version
     paramList[@"utmni"] = @"1"; // ignore this event from bounce rate calculations
-    paramList[@"utmdt"] = [JFUrlUtil encodeUrl:pageTitle]; // [pageTitle urlEncodeUsingEncoding:NSUTF8StringEncoding]; // page title
+    paramList[@"utmdt"] = [JFUrlUtil encodeUrl:self.pageTitle]; // [pageTitle urlEncodeUsingEncoding:NSUTF8StringEncoding]; // page title
     paramList[@"utmhid"] = [NSString stringWithFormat:@"%d", arc4random() % 1000000000]; // page title
     paramList[@"utmr"] = @"-"; // referrer URL
-    paramList[@"utmp"] = pageUrl; // document page URL (relative to root)
-    paramList[@"utmac"] = analyticsAccountCode; // GA account code
+    paramList[@"utmp"] = self.pageUrl; // document page URL (relative to root)
+    paramList[@"utmac"] = self.analyticsAccountCode; // GA account code
     paramList[@"utmcc"] = [self utmcCookieString]; // cookie string encoded
 
      //check if our tracking event is null and if not add to the params
-     if (trackingEvent != nil)
+     if (self.trackingEvent != nil)
      {
          //DDLogInfo(@"trackingEvent.category = %@", trackingEvent.category);
          //DDLogInfo(@"trackingEvent.action = %@", trackingEvent.action);
@@ -83,24 +83,24 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
          //if ([trackingEvent.val isNotEqualTo:nil])
              //DDLogInfo(@"trackingEvent.val = %@", trackingEvent.val);
 
-         NSString* eventString;
-         if ([trackingEvent.val isNotEqualTo:nil])
+         NSString *eventString;
+         if ([self.trackingEvent.val isNotEqualTo:nil])
          {
-             int valInt = (int)(trackingEvent.val.intValue);
-             NSNumber* valNumber = @(valInt);
+             int valInt = (int)(self.trackingEvent.val.intValue);
+             NSNumber *valNumber = @(valInt);
 
              eventString = [NSString stringWithFormat:@"5(%@*%@*%@)(%@)",
-                                  trackingEvent.category,
-                                  trackingEvent.action,
-                                  trackingEvent.label,
+                                  self.trackingEvent.category,
+                                  self.trackingEvent.action,
+                                  self.trackingEvent.label,
                                   valNumber];
          }
          else
          {
              eventString = [NSString stringWithFormat:@"5(%@*%@*%@)()",
-                            trackingEvent.category,
-                            trackingEvent.action,
-                            trackingEvent.label];
+                            self.trackingEvent.category,
+                            self.trackingEvent.action,
+                            self.trackingEvent.label];
          }
 
          //taken from http://code.google.com/apis/analytics/docs/tracking/gaTrackingTroubleshooting.html
@@ -158,20 +158,20 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
      */
 
      //add ip address if we have one
-     if ([requestedByIpAddress length] > 0)
+     if ([self.requestedByIpAddress length] > 0)
      {
-         paramList[@"utmip"] = requestedByIpAddress;
+         paramList[@"utmip"] = self.requestedByIpAddress;
      }
 
     //get final param string
-    NSMutableString* gaParams = [NSMutableString new];
-    for (NSString* key in paramList)
+    NSMutableString *gaParams = [NSMutableString new];
+    for (NSString *key in paramList)
     {
-        NSString* value = paramList[key];
+        NSString *value = paramList[key];
         [gaParams appendFormat:@"%@=%@&", key, value];
     }
 
-    NSString* finalURL = [NSString stringWithFormat:@"http://www.google-analytics.com/__utm.gif?%@", gaParams];
+    NSString *finalURL = [NSString stringWithFormat:@"http://www.google-analytics.com/__utm.gif?%@", gaParams];
 
     DDLogVerbose(@"Google Analytics URL: %@", finalURL);
 
@@ -180,14 +180,14 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
 
 - (NSString *)utmcCookieString
 {
-    NSString* cachedTimeStamp = [self timeStampCurrent];
+    NSString *cachedTimeStamp = [self timeStampCurrent];
     NSString *utma = [NSString stringWithFormat:@"%d.%@.%@.%@.%@.%@",
                       [self domainHash],
                       [NSString stringWithFormat:@"%d", arc4random() % 1000000000],
                       cachedTimeStamp,
                       cachedTimeStamp,
                       cachedTimeStamp,
-                      visitCount];
+                      self.visitCount];
 
     //referral informaiton
     NSString *utmz = [NSString stringWithFormat:@"%d.%@.%@.%@.utmcsr=%@|utmccn=%@|utmcmd=%@",
@@ -195,9 +195,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
                       cachedTimeStamp,
                       @"1",
                       @"1",
-                      referralSource,
-                      campaign,
-                      medium];
+                      self.referralSource,
+                      self.campaign,
+                      self.medium];
 
     NSString *utmcc = [NSString stringWithFormat:@"__utma=%@;+__utmz=%@;",
                        utma,
@@ -209,7 +209,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
 
 - (int)domainHash
 {
-    if ([pageDomain length] > 0)
+    if ([self.pageDomain length] > 0)
     {
         // converted from the google domain hash code listed here:
         // http://www.google.com/support/forum/p/Google+Analytics/thread?tid=626b0e277aaedc3c&hl=en
@@ -220,9 +220,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
         int intCharacter;
 
         a = 0;
-        for (h = [pageDomain length] - 1; h >= 0; h--)
+        for (h = [self.pageDomain length] - 1; h >= 0; h--)
         {
-            chrCharacter = (char)([pageDomain substringWithRange:NSMakeRange(h, 1)]);
+            chrCharacter = (char)([self.pageDomain substringWithRange:NSMakeRange(h, 1)]);
             intCharacter = (int) chrCharacter;
             a = (a << 6 & 268435455) + intCharacter + (intCharacter << 14);
             c = a & 266338304;
