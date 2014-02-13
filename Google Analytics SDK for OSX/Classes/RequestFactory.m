@@ -12,18 +12,12 @@
 
 @implementation RequestFactory
 
-
-
-
-- (TrackingRequest*) buildRequest: (GoogleEvent*) googleEvent analyticsAccountCode:(NSString*)analyticsAccountCode
+- (TrackingRequest *)buildRequest:(GoogleEvent *)googleEvent analyticsAccountCode:(NSString *)analyticsAccountCode
 {
-    TrackingRequest* tr = [TrackingRequest new];
+    TrackingRequest *tr = [TrackingRequest new];
     [tr setTrackingEvent:googleEvent];
     [tr setAnalyticsAccountCode:analyticsAccountCode];
     return tr;
 }
-
-
-
 
 @end

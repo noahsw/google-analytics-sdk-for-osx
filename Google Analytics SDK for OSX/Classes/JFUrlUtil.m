@@ -20,7 +20,7 @@
 
 @interface JFUrlUtil (PrivateMethods)
 
-+ (BOOL) isPercentAtIndex: (NSUInteger) index followedByTwoDigitHexCodeInCharacterArray: (unichar *) characters ofLength: (NSUInteger) length;
++ (BOOL)isPercentAtIndex:(NSUInteger)index followedByTwoDigitHexCodeInCharacterArray:(unichar *)characters ofLength:(NSUInteger)length;
 
 @end
 
@@ -31,30 +31,30 @@
  * Encodes the provided URL while respecting the portion before the query and
  * without escaping percent sequences that appear to have already been encoded.
  */
-+ (NSString *) encodeUrl: (NSString *) url {
-	
++ (NSString *)encodeUrl:(NSString *)url
+{
 	BOOL hasReachedTheQuery = NO;
 	NSUInteger length = [url length];
 	NSRange rangeOfAllCharacters = NSMakeRange(0, length);
 	unichar *chars = malloc(length * sizeof(unichar));
-	
+
 	[url getCharacters: chars
 				 range: rangeOfAllCharacters];
-	
+
 	// The output characters will be collected in another array.
 	unichar *outChars = calloc(length * 4, sizeof(unichar));
 	NSUInteger outIndex = 0;
-	
+
 	// Iterate over every character, encoding any that need it...
 	for (NSUInteger inIndex = 0; inIndex < length; ) {
-		
+
 		if (!hasReachedTheQuery && chars[inIndex] == '?') {
 			// The query portion of the URL has now been reached.
 			hasReachedTheQuery = YES;
 			outChars[outIndex++] = chars[inIndex++];
 			continue;
 		}
-		
+
 		// The logic in this loop is optimized (loop-unrolled) for performance reasons.
 		// SPACE → %20
 		if (chars[inIndex] == ' ') {
@@ -64,7 +64,7 @@
 			inIndex++;
 			continue;
 		}
-		
+
 		// SEMICOLON → %3B
 		if (chars[inIndex] == ';') {
 			outChars[outIndex++] = '%';
@@ -73,7 +73,7 @@
 			inIndex++;
 			continue;
 		}
-		
+
 		// @ → %40
 		if (chars[inIndex] == '@') {
 			outChars[outIndex++] = '%';
@@ -82,7 +82,7 @@
 			inIndex++;
 			continue;
 		}
-		
+
 		// HAT → %5E
 		if (chars[inIndex] == '^') {
 			outChars[outIndex++] = '%';
@@ -91,7 +91,7 @@
 			inIndex++;
 			continue;
 		}
-		
+
 		// PIPE → %7C
 		if (chars[inIndex] == '|') {
 			outChars[outIndex++] = '%';
@@ -100,7 +100,7 @@
 			inIndex++;
 			continue;
 		}
-		
+
 		// TILDE → %7E
 		if (chars[inIndex] == '~') {
 			outChars[outIndex++] = '%';
@@ -109,7 +109,7 @@
 			inIndex++;
 			continue;
 		}
-		
+
 		if (chars[inIndex] == '%') {
 			BOOL isAlreadyEncoded = [JFUrlUtil isPercentAtIndex: inIndex
 					  followedByTwoDigitHexCodeInCharacterArray: chars
@@ -128,7 +128,7 @@
 				continue;
 			}
 		}
-		
+
 		if (hasReachedTheQuery) {
 			// The following characters only need encoding in the query portion of the URL.
 
@@ -140,7 +140,7 @@
 				inIndex++;
 				continue;
 			}
-			
+
 			// PERIOD → %2E
 			if (chars[inIndex] == '.') {
 				outChars[outIndex++] = '%';
@@ -149,7 +149,7 @@
 				inIndex++;
 				continue;
 			}
-			
+
 			// SLASH → %2F
 			if (chars[inIndex] == '/') {
 				outChars[outIndex++] = '%';
@@ -158,7 +158,7 @@
 				inIndex++;
 				continue;
 			}
-			
+
 			// COLON → %3A
 			if (chars[inIndex] == ':') {
 				outChars[outIndex++] = '%';
@@ -167,7 +167,7 @@
 				inIndex++;
 				continue;
 			}
-			
+
 			// QUESTION MARK → %3F
 			if (chars[inIndex] == '?') {
 				outChars[outIndex++] = '%';
@@ -176,7 +176,7 @@
 				inIndex++;
 				continue;
 			}
-			
+
 			// { → %7b
 			if (chars[inIndex] == '{') {
 				outChars[outIndex++] = '%';
@@ -185,7 +185,7 @@
 				inIndex++;
 				continue;
 			}
-			
+
 			// } → 7d
 			if (chars[inIndex] == '}') {
 				outChars[outIndex++] = '%';
@@ -195,29 +195,28 @@
 				continue;
 			}
 		}
-			
-			
+
 		// The character does not require encoding so just pass it through...
 		outChars[outIndex++] = chars[inIndex++];
 	}
-	
+
 	NSMutableString *outString = [NSMutableString stringWithCharacters: outChars length: outIndex];
 	free(chars);
 	free(outChars);
-	
+
 	return outString;
 }
 
 /*
  * Returns YES if the percent at the provided index is followed by an already escaped 2-digit HEX code.
  */
-+ (BOOL) isPercentAtIndex: (NSUInteger) index followedByTwoDigitHexCodeInCharacterArray: (unichar *) characters ofLength: (NSUInteger) length {
-	
++ (BOOL)isPercentAtIndex:(NSUInteger)index followedByTwoDigitHexCodeInCharacterArray:(unichar *)characters ofLength:(NSUInteger)length
+{
 	if (index + 3 > length) {
 		// There aren't enough characters after the percent.
 		return NO;
 	}
-	
+
 	unichar firstCharacter = characters[index + 1];
 	unichar secondCharacter = characters[index + 2];
 
@@ -226,13 +225,13 @@
 		(firstCharacter >= 'a' && firstCharacter <= 'f'))) {
 		return NO;
 	}
-	
+
 	if (!((secondCharacter >= '0' && secondCharacter <= '9') ||
 		  (secondCharacter >= 'A' && secondCharacter <= 'F') ||
 		  (secondCharacter >= 'a' && secondCharacter <= 'f'))) {
 		return NO;
 	}
-	
+
 	return YES;
 }
 

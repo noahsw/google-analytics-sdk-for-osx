@@ -20,17 +20,16 @@ static const int ddLogLevel = LOG_LEVEL_INFO | LOG_LEVEL_ERROR | LOG_LEVEL_WARN;
 
 static NSString *ipAddress = nil;
 
-+ (NSString*) getIPAddress
++ (NSString *)getIPAddress
 {
-    
     if (ipAddress != nil)
         return ipAddress; // return cached result
-    
+
     NSUInteger  an_Integer;
     NSArray * ipItemsArray;
-    
+
     NSURL *iPURL = [NSURL URLWithString:@"http://checkip.dyndns.org"];
-    
+
     if (iPURL) {
         @try
         {
@@ -41,17 +40,17 @@ static NSString *ipAddress = nil;
             if (!error) {
                 NSScanner *theScanner;
                 NSString *text = nil;
-                
+
                 theScanner = [NSScanner scannerWithString:theIpHtml];
-                
+
                 while ([theScanner isAtEnd] == NO) {
-                    
+
                     // find start of tag
                     [theScanner scanUpToString:@"<" intoString:NULL] ; 
-                    
+
                     // find end of tag
                     [theScanner scanUpToString:@">" intoString:&text] ;
-                    
+
                     // replace the found tag with a space
                     //(you can filter multi-spaces out later if you wish)
                     theIpHtml = [theIpHtml stringByReplacingOccurrencesOfString:
@@ -59,12 +58,10 @@ static NSString *ipAddress = nil;
                                                                      withString:@" "] ;
                     ipItemsArray =[theIpHtml  componentsSeparatedByString:@" "];
                     an_Integer=[ipItemsArray indexOfObject:@"Address:"];
-                    
+
                     ipAddress =ipItemsArray[++an_Integer];
-                    
                 } 
-                
-                
+
                 //DDLogVerbose(@"Public IP: %@",ipAddress);
             } else {
                 // NSLog(@"Oops... g %@, %@", [error code], [error localizedDescription]);
@@ -75,8 +72,7 @@ static NSString *ipAddress = nil;
             ipAddress = [NSString stringWithFormat:@""];
         }
     }
-    
-    
+
     return ipAddress;
 }
 

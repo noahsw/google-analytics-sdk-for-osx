@@ -14,19 +14,18 @@
     NSString *pageTitle;
     NSString *pageDomain;
     NSString *pageUrl;
-    
+
     NSString *requestedByIpAddress;
-    
+
     NSString *referralSource;
     NSString *medium;
     NSString *campaign;
-    
+
     GoogleEvent *trackingEvent;
-    
+
     NSString *analyticsAccountCode;
-    
+
     NSString *visitCount;
-        
 }
 
 @property (nonatomic, strong) NSString *pageTitle;
@@ -46,12 +45,12 @@
 @property (nonatomic, strong) NSString *visitCount;
 
 
-- (NSString*) trackingGifURL;
+- (NSString *)trackingGifURL;
 
-- (NSString*) utmcCookieString;
+- (NSString *)utmcCookieString;
 
-- (int) domainHash;
+- (int)domainHash;
 
-- (NSString*) timeStampCurrent;
+- (NSString *)timeStampCurrent;
 
 @end

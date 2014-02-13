@@ -12,6 +12,7 @@
 #include <stdlib.h> // for random number
 
 #import "DDLog.h"
+
 static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERROR | LOG_LEVEL_WARN;
 
 @implementation TrackingRequest
@@ -34,7 +35,6 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
 
 - (id)init
 {
-    
     self = [super init];
     if (self) {
         referralSource = @"(direct)";
@@ -46,22 +46,19 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
         pageDomain = @"";
         pageUrl = @"/";
     }
-    
+
     return self;
 }
 
-
-- (NSString*) trackingGifURL
+- (NSString *)trackingGifURL
 {
-    
-    
     // REQUEST URL FORMAT:
     // http://www.google-analytics.com/__utm.gif?utmwv=4.6.5&utmn=488134812&utmhn=facebook.com&utmcs=UTF-8&utmsr=1024x576&utmsc=24-bit&utmul=en-gb&utmje=0&utmfl=10.0%20r42&utmdt=Facebook%20Contact%20Us&utmhid=48481&utmr=-&utmp=%2Fwebdigi%2Fcontact&utmac=UA-YYYY-Z&utmcc=__utma%3D15417661.47491465.126033522.125456497.12664692.6%3B%2B__utmz%3D1417661.12630522.1.1.utmcsr%3D(direct)%7Cutmccn%3D(direct)%7Cutmcmd%3D(none)%3B
-    
+
     NSMutableDictionary* paramList = [NSMutableDictionary dictionary];
     paramList[@"utmwv"] = @"5.2.2d"; // analytics version
     paramList[@"utmn"] = [NSString stringWithFormat:@"%d", arc4random() % 1000000000]; // random request number
-    
+
     paramList[@"utmhn"] = pageDomain; // domain name
     paramList[@"utmcs"] = @"UTF-8"; // document encoding
     paramList[@"utmsr"] = @"-"; // screen resolution
@@ -76,7 +73,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
     paramList[@"utmp"] = pageUrl; // document page URL (relative to root)
     paramList[@"utmac"] = analyticsAccountCode; // GA account code
     paramList[@"utmcc"] = [self utmcCookieString]; // cookie string encoded
-         
+
      //check if our tracking event is null and if not add to the params
      if (trackingEvent != nil)
      {
@@ -85,13 +82,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
          //DDLogInfo(@"trackingEvent.label = %@", trackingEvent.label);
          //if ([trackingEvent.val isNotEqualTo:nil])
              //DDLogInfo(@"trackingEvent.val = %@", trackingEvent.val);
-             
+
          NSString* eventString;
          if ([trackingEvent.val isNotEqualTo:nil])
          {
              int valInt = (int)(trackingEvent.val.intValue);
              NSNumber* valNumber = @(valInt);
-             
+
              eventString = [NSString stringWithFormat:@"5(%@*%@*%@)(%@)",
                                   trackingEvent.category,
                                   trackingEvent.action,
@@ -99,19 +96,20 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
                                   valNumber];
          }
          else
+         {
              eventString = [NSString stringWithFormat:@"5(%@*%@*%@)()",
                             trackingEvent.category,
                             trackingEvent.action,
                             trackingEvent.label];
-         
+         }
+
          //taken from http://code.google.com/apis/analytics/docs/tracking/gaTrackingTroubleshooting.html
-         
+
          paramList[@"utme"] = [JFUrlUtil encodeUrl:eventString]; 
          paramList[@"gaq"] = @"1";
          paramList[@"utmt"] = @"event"; // type of request (page view or event, etc)
-         
      }
-     
+
     /* we don't support transactions yet
      //check if the transaction object is null and if not add the transaction params
      if (TrackingTransaction!=null)
@@ -158,14 +156,13 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
      
      }
      */
-     
+
      //add ip address if we have one
      if ([requestedByIpAddress length] > 0)
      {
          paramList[@"utmip"] = requestedByIpAddress;
      }
-     
-     
+
     //get final param string
     NSMutableString* gaParams = [NSMutableString new];
     for (NSString* key in paramList)
@@ -173,20 +170,16 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
         NSString* value = paramList[key];
         [gaParams appendFormat:@"%@=%@&", key, value];
     }
-        
+
     NSString* finalURL = [NSString stringWithFormat:@"http://www.google-analytics.com/__utm.gif?%@", gaParams];
-    
+
     DDLogVerbose(@"Google Analytics URL: %@", finalURL);
-    
+
     return finalURL;
-    
-    
 }
 
-
-- (NSString*) utmcCookieString
+- (NSString *)utmcCookieString
 {
- 
     NSString* cachedTimeStamp = [self timeStampCurrent];
     NSString *utma = [NSString stringWithFormat:@"%d.%@.%@.%@.%@.%@",
                       [self domainHash],
@@ -195,9 +188,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
                       cachedTimeStamp,
                       cachedTimeStamp,
                       visitCount];
-    
-    
-    
+
     //referral informaiton
     NSString *utmz = [NSString stringWithFormat:@"%d.%@.%@.%@.utmcsr=%@|utmccn=%@|utmcmd=%@",
                       [self domainHash],
@@ -207,19 +198,16 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
                       referralSource,
                       campaign,
                       medium];
-    
-    
+
     NSString *utmcc = [NSString stringWithFormat:@"__utma=%@;+__utmz=%@;",
                        utma,
                        utmz];
     utmcc = [JFUrlUtil encodeUrl:utmcc]; 
-    
+
     return (utmcc);
-     
 }
 
-
-- (int) domainHash
+- (int)domainHash
 {
     if ([pageDomain length] > 0)
     {
@@ -230,35 +218,28 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERR
         long h;
         char chrCharacter;
         int intCharacter;
-        
+
         a = 0;
         for (h = [pageDomain length] - 1; h >= 0; h--)
         {
-            
             chrCharacter = (char)([pageDomain substringWithRange:NSMakeRange(h, 1)]);
             intCharacter = (int) chrCharacter;
             a = (a << 6 & 268435455) + intCharacter + (intCharacter << 14);
             c = a & 266338304;
             a = c != 0 ? a ^ c >> 21 : a;
         }
-        
+
         return a;
     }
-                                  
+
     return 0;
 }
 
-
-
-- (NSString*) timeStampCurrent
-{    
-    
+- (NSString *)timeStampCurrent
+{
     NSString *timestamp = [NSString stringWithFormat:@"%0.0f", [[NSDate date] timeIntervalSince1970]];
-    
+
     return timestamp;
-    
 }
 
-                                  
-                                  
 @end

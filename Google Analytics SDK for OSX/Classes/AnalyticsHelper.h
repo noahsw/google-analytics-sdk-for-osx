@@ -6,12 +6,11 @@
 //  http://github.com/noahsw/google-analytics-sdk-for-osx
 //
 
-
 @interface AnalyticsHelper : NSObject
 
-@property NSString* domainName;
-@property NSString* analyticsAccountCode;
+@property NSString *domainName;
+@property NSString *analyticsAccountCode;
 
--(BOOL) fireEvent: (NSString*)eventAction eventValue:(NSNumber*)eventValue;
+- (BOOL)fireEvent:(NSString *)eventAction eventValue:(NSNumber *)eventValue;
 
 @end
