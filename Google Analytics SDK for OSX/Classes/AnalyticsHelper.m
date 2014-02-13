@@ -17,7 +17,7 @@
 #import "DDTTYLogger.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE | LOG_LEVEL_INFO | LOG_LEVEL_ERROR | LOG_LEVEL_WARN;
-static NSOperationQueue* operationQueue;
+static NSOperationQueue *operationQueue;
 
 
 @implementation AnalyticsHelper
@@ -25,9 +25,25 @@ static NSOperationQueue* operationQueue;
 @synthesize domainName;
 @synthesize analyticsAccountCode;
 
++ (instancetype)sharedHelper
+{
+    static id _sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _sharedInstance = [[self alloc] init];
+    });
+
+    return _sharedInstance;
+}
+
 - (id)init
 {
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    self = [super init];
+    if (self)
+    {
+        [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    }
+
     return self;
 }
 
