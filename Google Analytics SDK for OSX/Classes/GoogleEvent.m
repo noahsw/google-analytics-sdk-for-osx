@@ -10,33 +10,33 @@
 
 @implementation GoogleEvent
 
-@synthesize domainName;
-@synthesize category;
-@synthesize action;
-@synthesize label;
-@synthesize val;
+@synthesize domainName = _domainName;
+@synthesize category = _category;
+@synthesize action = _action;
+@synthesize label = _label;
+@synthesize val = _val;
 
-- (id)initWithParams:(NSString *)_domainName category:(NSString *)_category action:(NSString *)_action label:(NSString *)_label value:(NSNumber *)_val;
+- (id)initWithParams:(NSString *)domainName category:(NSString *)category action:(NSString *)action label:(NSString *)label value:(NSNumber *)val;
 {
-    if ([_domainName length] == 0)
+    if ([domainName length] == 0)
         return nil;
 
-    if ([_category length] == 0)
+    if ([category length] == 0)
         return nil;
 
-    if ([_action length] == 0)
+    if ([action length] == 0)
         return nil;
 
-    if ([_label length] == 0)
+    if ([label length] == 0)
         return nil;
 
     self = [super init];
     if (self) {
-        domainName = [_domainName copy];
-        category = [_category copy];
-        action = [_action copy];
-        label = [_label copy];
-        val = [_val copy];
+        self.domainName = domainName;
+        self.category = category;
+        self.action = action;
+        self.label = label;
+        self.val = val;
     }
 
     return self;
