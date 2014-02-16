@@ -9,14 +9,8 @@
 #import "TrackingRequest.h"
 #import "GoogleEvent.h"
 
-
 @interface RequestFactory : NSObject
-{
-    
-    
-}
 
-
-- (TrackingRequest*) buildRequest: (GoogleEvent*) googleEvent analyticsAccountCode:(NSString*)analyticsAccountCode;
+- (TrackingRequest *)buildRequest:(GoogleEvent *)googleEvent analyticsAccountCode:(NSString *)analyticsAccountCode;
 
 @end

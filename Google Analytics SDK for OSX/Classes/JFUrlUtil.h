@@ -20,6 +20,6 @@
 
 @interface JFUrlUtil : NSObject
 
-+ (NSString *) encodeUrl: (NSString *) url;
++ (NSString *)encodeUrl:(NSString *)url;
 
 @end

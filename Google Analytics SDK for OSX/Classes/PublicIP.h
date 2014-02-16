@@ -6,14 +6,8 @@
 //  http://github.com/noahsw/google-analytics-sdk-for-osx
 //
 
-
-
 @interface PublicIP : NSObject
-{
 
-}
-
-+ (NSString*) getIPAddress;
-
++ (NSString *)getIPAddress;
 
 @end

@@ -9,12 +9,7 @@
 #import "TrackingRequest.h"
 
 @interface GoogleTracking : NSOperation
-{
 
-}
-
-@property (strong) TrackingRequest* request;
-
-
+@property (strong) TrackingRequest *request;
 
 @end
